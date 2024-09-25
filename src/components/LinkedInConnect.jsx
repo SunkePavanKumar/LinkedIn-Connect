@@ -1,7 +1,7 @@
 // src/components/LinkedInConnect.jsx
 const LinkedInConnect = () => {
-  const clientId = '86dxfpo34xwrq8';
-  const redirectUri = 'http://localhost:5173/auth/linkedin/callback';
+  const clientId = import.meta.env.VITE_CLIENT_ID;
+  const redirectUri = `${import.meta.env.VITE_REDIRECT_URL}/auth/linkedin/callback`;
   
   // Use the available scopes from your LinkedIn app
   const scope = 'openid email profile';

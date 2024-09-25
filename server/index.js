@@ -2,19 +2,21 @@
 import express from 'express';
 import axios from 'axios';
 import cors from 'cors';
+import dotenv from "dotenv";
 
+dotenv.config();
 const app = express();
 app.use(cors());
 
 app.get('/auth/linkedin/token', async (req, res) => {
   const { code } = req.query;
-  const clientId = '86dxfpo34xwrq8';
-  const clientSecret = 'WPL_AP1.kvCvS6eUPEtHcKOr.u4RirQ==';
-  const redirectUri = 'http://localhost:5173/auth/linkedin/callback';
+  const clientId = process.env.VITE_CLIENT_ID;
+  const clientSecret = process.env.VITE_CLIENT_SECRET;
+  const redirectUri = `${process.env.VITE_REDIRECT_URL}/auth/linkedin/callback`;
 
   try {
     // Request access token from LinkedIn
-    const tokenResponse = await axios.post('https://www.linkedin.com/oauth/v2/accessToken', null, {
+      const tokenResponse = await axios.post('https://www.linkedin.com/oauth/v2/accessToken', null, {
       params: {
         grant_type: 'authorization_code',
         code: code,

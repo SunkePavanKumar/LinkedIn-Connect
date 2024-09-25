@@ -14,7 +14,8 @@ const AuthCallback = () => {
       const exchangeCodeForToken = async () => {
         try {
           // Call backend to exchange the authorization code for an access token
-          const response = await axios.get('http://localhost:4000/auth/linkedin/token', {
+          const endpoint = import.meta.env.VITE_ENVIRONMENT = "development" ? import.meta.env.VITE_BACKEND_URL + "/auth/linkedin/token" : import.meta.env.VITE_BACKEND_URL + "/api/auth/linkedin/token";
+          const response = await axios.get(endpoint, {
             params: { code },
           });
 
