@@ -1,6 +1,7 @@
 // src/components/LinkedInConnect.jsx
 const LinkedInConnect = () => {
   const clientId = import.meta.env.VITE_CLIENT_ID;
+  console.log(`Client ID: ${clientId}`);
   const redirectUri = `${import.meta.env.VITE_REDIRECT_URL}/auth/linkedin/callback`;
   
   // Use the available scopes from your LinkedIn app
