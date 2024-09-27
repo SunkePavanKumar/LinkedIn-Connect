@@ -1,4 +1,3 @@
-// index.js
 import express from 'express';
 import axios from 'axios';
 import cors from 'cors';
@@ -15,7 +14,6 @@ app.get('/auth/linkedin/token', async (req, res) => {
   const redirectUri = `${process.env.VITE_REDIRECT_URL}/auth/linkedin/callback`;
 
   try {
-    // Request access token from LinkedIn
       const tokenResponse = await axios.post('https://www.linkedin.com/oauth/v2/accessToken', null, {
       params: {
         grant_type: 'authorization_code',

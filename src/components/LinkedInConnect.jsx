@@ -1,15 +1,13 @@
-// src/components/LinkedInConnect.jsx
 const LinkedInConnect = () => {
   const clientId = import.meta.env.VITE_CLIENT_ID;
   console.log(`Client ID: ${clientId}`);
   const redirectUri = `${import.meta.env.VITE_REDIRECT_URL}/auth/linkedin/callback`;
   
-  // Use the available scopes from your LinkedIn app
   const scope = 'openid email profile';
 
   const handleLinkedInConnect = () => {
     const authUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scope)}`;
-    window.location.href = authUrl; // Redirect to LinkedIn OAuth
+    window.location.href = authUrl;
   };
 
   return (

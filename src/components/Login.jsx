@@ -8,7 +8,8 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // You can add validation here
+
+    
     navigate('/linkedin-connect');
   };
 

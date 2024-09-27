@@ -1,11 +1,9 @@
-// src/components/AuthCallback.jsx
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const AuthCallback = () => {
   const navigate = useNavigate();
-
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     const code = queryParams.get('code');
@@ -13,19 +11,13 @@ const AuthCallback = () => {
     if (code) {
       const exchangeCodeForToken = async () => {
         try {
-          // Call backend to exchange the authorization code for an access token
           const endpoint = import.meta.env.VITE_ENVIRONMENT = "development" ? import.meta.env.VITE_BACKEND_URL + "/auth/linkedin/token" : import.meta.env.VITE_BACKEND_URL + "/api/auth/linkedin/token";
           const response = await axios.get(endpoint, {
             params: { code },
           });
 
           const { token } = response.data;
-
-          // Store access token, user profile and picture in local storage or state
           localStorage.setItem('linkedin_access_token', token);
-
-
-          // Redirect to welcome page after successful login
           navigate('/welcome');
         } catch (error) {
           console.error('Error exchanging authorization code for token or fetching LinkedIn profile:', error);
